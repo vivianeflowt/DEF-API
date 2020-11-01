@@ -1,0 +1,5 @@
+node_modules
+doc
+scripts
+.history
+jest.config.js

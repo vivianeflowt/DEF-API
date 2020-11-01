@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+//@ TOKEN GENERATOR /
+(function () {
+    console.clear();
+    console.log("TOKEN:");
+    console.log(require("crypto").randomBytes(64).toString("hex"));
+    console.log("");
+})();
