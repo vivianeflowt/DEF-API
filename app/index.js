@@ -6,7 +6,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const ApiRouter = require('./api');
 const DebugMiddleware = require('./middlewares/debug');
-const Credencial = require('../models/Credencial');
+const Credencial = require('../database/models/Credencial');
 
 // @ MAIN MIDDLEWARE
 router.use(DebugMiddleware);

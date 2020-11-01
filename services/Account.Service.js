@@ -1,4 +1,4 @@
-const Account = require('../models/Account');
+const Account = require('../database/models/Account');
 
 const Create = async (username, email, password) => {
   try {
