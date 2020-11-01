@@ -17,7 +17,7 @@ module.exports.load = async () => {
     database
   });
 
-  sequelize
+  await sequelize
     .authenticate()
     .then(() => {
       logger.log('app', 'Postgres Load!');
