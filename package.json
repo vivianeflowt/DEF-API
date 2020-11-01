@@ -8,8 +8,8 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "nodemon ./server",
-    "dev": "nodemon ./server",
+    "start": "nodemon ./server.js",
+    "dev": "nodemon ./server.js",
     "format": "npx prettier --write .",
     "eslint": "./scripts/eslint",
     "docker-up": "./docker-up",

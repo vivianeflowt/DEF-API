@@ -1,18 +1,18 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
 
 //  if (!global.logger){ global.logger = require('my_logger'); }
 // @ GLOBAL MODULES
 /* global */
-Object.assign(global, { config: require('./common/config') });
-Object.assign(global, { express: require('express') });
+Object.assign(global, { config: require('./common/config/config') });
+// Object.assign(global, { express: require('express') });
 Object.assign(global, { logger: require('./common/log/logger') });
 
 // @ SERVER
 const { logger, config } = global;
 
-const loader = require('./loaders');
 const fs = require('fs');
-//const keys = require('./utils/keys');
+const loader = require('./loaders');
+// const keys = require('./utils/keys');
 
 console.clear();
 
@@ -42,11 +42,10 @@ async function start() {
       process.exit(1);
     }
   } finally {
-    //devlogger.app(`Listen: http://${config.server.host}:${config.server.port}`);
     logger.log('app', `Listen: http://${config.server.host}:${config.server.port}`);
-    //startConsoleClear();
-    //testLogger();
-    //testLogger2();
+    // startConsoleClear();
+    // testLogger();
+    // testLogger2();
   }
 }
 

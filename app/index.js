@@ -1,9 +1,10 @@
 // @
-const { express } = global;
+
+const express = require('express');
 
 const router = express.Router();
 const mongoose = require('mongoose');
-const ApiRouter = require('../api');
+const ApiRouter = require('./api');
 const DebugMiddleware = require('./middlewares/debug');
 const Credencial = require('../models/Credencial');
 

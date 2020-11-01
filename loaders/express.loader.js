@@ -1,6 +1,9 @@
-const { logger, config, express } = global;
+/* global express */
+
+const { logger, config } = global;
 
 // @ EXPRESS LOADER
+const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
