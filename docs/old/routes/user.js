@@ -1,8 +1,9 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
 
-const controller = require('../controllers/user')
+const router = express.Router();
 
-router.post('/api/user/create', controller.create)
+const controller = require('../controllers/user');
 
-module.exports = router
+router.post('/api/user/create', controller.create);
+
+module.exports = router;

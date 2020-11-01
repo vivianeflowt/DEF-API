@@ -1,3 +1,1 @@
-module.exports.objectToUpperCase = (obj = {}) => {
-    return JSON.parse(JSON.stringify(obj).toUpperCase())
-}
+module.exports.objectToUpperCase = (obj = {}) => JSON.parse(JSON.stringify(obj).toUpperCase());

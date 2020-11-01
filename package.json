@@ -14,7 +14,8 @@
     "eslint": "./scripts/eslint",
     "docker-up": "./docker-up",
     "docker-down": "./docker-down",
-    "test": "jest"
+    "test": "jest",
+    "test-menu": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -28,9 +29,6 @@
   },
   "homepage": "https://github.com/vivianeflowt/def-api-core#readme",
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-eslint": "10.1.0",
-    "babel-preset-env": "1.7.0",
     "eslint": "7.12.1",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-plugin-import": "2.22.1",
@@ -53,7 +51,6 @@
     "helmet": "4.1.1",
     "http": "0.0.1-security",
     "jsonwebtoken": "8.5.1",
-    "knex": "0.21.11",
     "mongodb": "3.6.2",
     "mongoose": "5.10.11",
     "mongoose-unique-validator": "2.0.3",

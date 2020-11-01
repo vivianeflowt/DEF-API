@@ -1,5 +1,6 @@
 const assert = require('assert');
 
 test('test', () => {
-  assert.strictEqual(true, true);
+  expect(3).toBe(3);
+  // assert.strictEqual(true, true);
 });

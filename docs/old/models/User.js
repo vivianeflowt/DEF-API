@@ -1,142 +1,142 @@
-const mongoose = require('mongoose')
-const Schema = require('mongoose').Schema
-const arrClear = require('array-unique')
-const isEmail = require('validator').isEmail
-const bcrypt = require('bcrypt')
-const slugify = require('slugify')
-const uniqueValidator = require('mongoose-unique-validator')
-const objectToUpperCase = require('../helpers/helpers').objectToUpperCase
+const mongoose = require('mongoose');
+const { Schema } = require('mongoose');
+const arrClear = require('array-unique');
+const { isEmail } = require('validator');
+const bcrypt = require('bcrypt');
+const slugify = require('slugify');
+const uniqueValidator = require('mongoose-unique-validator');
+const { objectToUpperCase } = require('../helpers/helpers');
 
 const UserSchema = new Schema({
-    uid: {
-        type: String,
-        trim: true,
-        unique: true,
-        uppercase: true,
-        required: true,
-        index: true,
-        select: true,
-        immutable: true,
+  uid: {
+    type: String,
+    trim: true,
+    unique: true,
+    uppercase: true,
+    required: true,
+    index: true,
+    select: true,
+    immutable: true,
+  },
+  username: {
+    type: String,
+    index: true,
+    select: true,
+    required: true,
+    immutable: true,
+    required: [true, 'email required'],
+    maxlength: [80, 'username too long'],
+  },
+  email: {
+    type: String,
+    index: true,
+    trim: true,
+    lowercase: true,
+    unique: true,
+    select: true,
+    required: [true, 'email required'],
+    validate: [isEmail, 'invalid email'],
+    maxlength: [120, 'email too long'],
+  },
+  password: {
+    type: String,
+    trim: true,
+    select: true,
+    required: [true, 'password required'],
+  },
+  fistname: {
+    type: String,
+    default: '',
+    maxlength: [120, 'firstname too long'],
+  },
+  lastname: {
+    type: String,
+    default: '',
+    maxlength: [120, 'lastname too long'],
+  },
+  active: {
+    type: Boolean,
+    default: true,
+  },
+  subscription: {
+    verified: {
+      type: Boolean,
+      default: false,
     },
-    username: {
-        type: String,
-        index: true,
-        select: true,
-        required: true,
-        immutable: true,
-        required: [true, 'email required'],
-        maxlength: [80, 'username too long'],
+    code: {
+      type: String,
+      require: true,
     },
-    email: {
-        type: String,
-        index: true,
-        trim: true,
-        lowercase: true,
-        unique: true,
-        select: true,
-        required: [true, 'email required'],
-        validate: [isEmail, 'invalid email'],
-        maxlength: [120, 'email too long'],
-    },
-    password: {
-        type: String,
-        trim: true,
-        select: true,
-        required: [true, 'password required'],
-    },
-    fistname: {
-        type: String,
-        default: '',
-        maxlength: [120, 'firstname too long'],
-    },
-    lastname: {
-        type: String,
-        default: '',
-        maxlength: [120, 'lastname too long'],
-    },
-    active: {
-        type: Boolean,
-        default: true,
-    },
-    subscription: {
-        verified: {
-            type: Boolean,
-            default: false,
-        },
-        code: {
-            type: String,
-            require: true,
-        },
-    },
-    credentials: {
-        type: Object,
-        default: {},
-    },
-    privileges: {
-        type: Object,
-        default: {},
-    },
-    roles: {
-        type: Array,
-        default: ['USER'],
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-})
+  },
+  credentials: {
+    type: Object,
+    default: {},
+  },
+  privileges: {
+    type: Object,
+    default: {},
+  },
+  roles: {
+    type: Array,
+    default: ['USER'],
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-UserSchema.plugin(uniqueValidator)
+UserSchema.plugin(uniqueValidator);
 
 // Password Hash
 UserSchema.pre('save', function (next) {
-    const user = this
+  const user = this;
 
-    // only hash the password if it has been modified (or is new)
-    if (!user.isModified('password')) return next()
+  // only hash the password if it has been modified (or is new)
+  if (!user.isModified('password')) return next();
 
-    const hash = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8), null)
-    user.password = hash
-    next()
-})
+  const hash = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8), null);
+  user.password = hash;
+  next();
+});
 
 // Password Check
 UserSchema.methods.validatePassword = function validatePassword(data) {
-    return bcrypt.compareSync(data, this.password)
-}
+  return bcrypt.compareSync(data, this.password);
+};
 
 // Roles
 UserSchema.pre('save', function (next) {
-    const user = this
+  const user = this;
 
-    if (!user.isModified('roles')) return next()
+  if (!user.isModified('roles')) return next();
 
-    const roles = arrClear(user.roles)
-    roles.forEach((role) => {
-        role = role.toUpperCase().trim().split(' ').join('')
-    })
-    user.roles = roles
-    next()
-})
+  const roles = arrClear(user.roles);
+  roles.forEach((role) => {
+    role = role.toUpperCase().trim().split(' ').join('');
+  });
+  user.roles = roles;
+  next();
+});
 
 // privileges
 UserSchema.pre('save', function (next) {
-    const user = this
-    if (!user.isModified('privileges')) return next()
-    const privileges = objectToUpperCase(user.privileges)
-    user.privileges = privileges
-    next()
-})
+  const user = this;
+  if (!user.isModified('privileges')) return next();
+  const privileges = objectToUpperCase(user.privileges);
+  user.privileges = privileges;
+  next();
+});
 
-//credentials
+// credentials
 UserSchema.pre('save', function (next) {
-    const user = this
-    if (!user.isModified('credentials')) return next()
-    const credentials = objectToUpperCase(user.credentials)
-    user.credentials = credentials
-    next()
-})
+  const user = this;
+  if (!user.isModified('credentials')) return next();
+  const credentials = objectToUpperCase(user.credentials);
+  user.credentials = credentials;
+  next();
+});
 
-const UserModel = mongoose.model('User', UserSchema)
+const UserModel = mongoose.model('User', UserSchema);
 
-module.exports.UserModel = UserModel
+module.exports.UserModel = UserModel;

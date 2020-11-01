@@ -1,12 +1,11 @@
-'use strict'
+const express = require('express');
 
-const express = require('express')
-const router = express.Router()
+const router = express.Router();
 
-const controller = require('../controllers/auth')
+const controller = require('../controllers/auth');
 
-router.post('/api/auth/login', controller.login)
-router.get('/api/auth/logout', controller.logout)
-router.get('/api/auth/subscription/:code', controller.subscription)
+router.post('/api/auth/login', controller.login);
+router.get('/api/auth/logout', controller.logout);
+router.get('/api/auth/subscription/:code', controller.subscription);
 
-module.exports = router
+module.exports = router;
