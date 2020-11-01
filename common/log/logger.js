@@ -51,7 +51,7 @@ const logger = createLogger({
         format.timestamp({ format: 'YYYY/MM/DD HH:mm:ss' }),
         format.printf((info) => `[${info.timestamp}] [${info.level}]: ${info.message}`)
       ),
-      fileName: `${__dirname}/console%DATE%.log`,
+      fileName: `${__dirname}/data/console%DATE%.log`,
       dateFormat: 'DDMMYYYY',
       bufferSize: 4096,
       handleExceptions: true

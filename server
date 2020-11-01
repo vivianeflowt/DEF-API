@@ -3,10 +3,9 @@
 //  if (!global.logger){ global.logger = require('my_logger'); }
 // @ GLOBAL MODULES
 /* global */
-Object.assign(global, { devlogger: require('./utils/devlogger') });
 Object.assign(global, { config: require('./common/config') });
 Object.assign(global, { express: require('express') });
-Object.assign(global, { logger: require('./log/logger') });
+Object.assign(global, { logger: require('./common/log/logger') });
 
 // @ SERVER
 const { logger, config } = global;
