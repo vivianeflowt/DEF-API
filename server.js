@@ -4,14 +4,12 @@
 // @ GLOBAL MODULES
 /* global */
 Object.assign(global, { config: require('./common/config/config') });
-// Object.assign(global, { express: require('express') });
 Object.assign(global, { logger: require('./common/log/logger') });
 
 // @ SERVER
 const { logger, config } = global;
 
-const fs = require('fs');
-const loader = require('./loaders');
+// const fs = require('fs');
 // const keys = require('./utils/keys');
 
 console.clear();
@@ -29,59 +27,65 @@ console.clear();
 //   }, 50000);
 // };
 //
-async function start() {
-  try {
-    logger.log('app', 'Loading Server...');
-    // #
-    await loader.express.load();
-    await loader.mongo.load();
-    // await loader.postgres.load();
 
-    // #
-  } catch (error) {
-    if (error) {
-      logger.log('error', error);
-      console.log(error);
-      process.exit(1);
-    }
-  } finally {
+// @ EXPRESS LOADER
+const express = require('express');
+const http = require('http');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const compression = require('compression');
+const helmet = require('helmet');
+const application = require('./app');
+
+const database = require('./database');
+
+const init = async () => {
+  // import path from 'path'
+  // import cookieParser from 'cookie-parser'
+  // import rescue from 'express-rescue'
+
+  const app = express();
+  app.set(config.server.port);
+  // #
+  app.use(helmet());
+  app.use(compression());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+  // #
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  // #
+
+  app.use(morgan(' - :method :url :status :res[content-length] - :response-time ms'));
+  app.use(application);
+
+  await database.connect();
+
+  // # Catch All
+  app.use((error, req, res, next) => {
+    logger.log('error', error);
+    res.status(error.status || 500);
+    res.send({ error });
+    next();
+  });
+
+  // #
+  const server = http.createServer(app);
+  server.listen(config.server.port);
+  server.on('error', (error) => {
+    logger.log('error', error);
+    console.log(error);
+    process.exit(1);
+  });
+  server.on('listening', () => {
+    console.log('');
     logger.log('app', `Listen: http://${config.server.host}:${config.server.port}`);
-    // startConsoleClear();
-    // testLogger();
-    // testLogger2();
-  }
-}
+  });
+};
 
-start();
+init();
 
-const testLogger = () => {
-  setInterval(() => {
-    // for (let index = 0; index < Math.floor(Math.random() * 11 * 5); index++) {
-    //   setTimeout(() => {
-    //     logger.log('data', 'http');
-    //   }, Math.floor(Math.random() * 11 * 10));
-    // }
-    // for (let index = 0; index < Math.floor(Math.random() * 11 * 5); index++) {
-//     //   setTimeout(() => {
-//     //     logger.log('data', 'http');
-//     //   }, Math.floor(Math.random() * 11));
-//     // }
-//     setTimeout(() => {
-//       logger.log('info', 'Viviane');
-//     }, Math.floor(Math.random() * 11 * 100));
-//     setTimeout(() => {
-//       logger.log('warn', 'Viviane');
-//     }, Math.floor(Math.random() * 11 * 300));
-//     setTimeout(() => {
-//       logger.log('error', 'Viviane');
-//     }, Math.floor(Math.random() * 11 * 20000));
-//     setTimeout(() => {
-//       logger.log('info', 'tick');
-//     }, 10000);
-//   }, 1000);
-// };
-
-// const testLogger2 = () => {
+// const testLogger = () => {
 //   setInterval(() => {
 //     console.log('');
 //     logger.log('error', 'Viviane');

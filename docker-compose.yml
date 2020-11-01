@@ -23,16 +23,5 @@ services:
     volumes:
       - delight-app-data:/data/db
 
-  postgres:
-    image: postgres
-    environment:
-      POSTGRES_USER: "${POSTGRES_USER}"
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      POSTGRES_DB: "${POSTGRES_DATABASE}"
-    ports:
-      - "5432:5432"
-    volumes:
-      - delight-app-data:/var/lib/postgresql/data
-
 volumes:
   delight-app-data:
