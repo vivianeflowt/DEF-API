@@ -35,7 +35,7 @@ async function start() {
     // #
     await loader.express.load();
     await loader.mongo.load();
-    await loader.postgres.load();
+    // await loader.postgres.load();
 
     // #
   } catch (error) {
