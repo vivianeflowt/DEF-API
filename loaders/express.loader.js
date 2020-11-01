@@ -45,6 +45,7 @@ module.exports.load = async () => {
   server.listen(config.server.port);
   server.on('error', (error) => {
     logger.log('error', error);
+    console.log(error);
     process.exit(1);
   });
   server.on('listening', () => {

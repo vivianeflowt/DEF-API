@@ -1,5 +1,5 @@
 // #!/usr/bin/env node
-
+//
 //  if (!global.logger){ global.logger = require('my_logger'); }
 // @ GLOBAL MODULES
 /* global */
@@ -34,11 +34,14 @@ async function start() {
     logger.log('app', 'Loading Server...');
     // #
     await loader.express.load();
-    await loader.mongoose.load();
+    await loader.mongo.load();
+    // await loader.postgres.load();
+
     // #
   } catch (error) {
     if (error) {
       logger.log('error', error);
+      console.log(error);
       process.exit(1);
     }
   } finally {
