@@ -23,3 +23,4 @@ http://vitaly-t.github.io/pg-promise/Database.html#.connect
 https://www.npmjs.com/package/winston
 https://github.com/mapbox/node-sqlite3
 https://sequelize.org/v5/manual/dialects.html#postgresql
+https://github.com/dylang/npm-check
