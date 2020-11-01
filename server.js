@@ -1,5 +1,5 @@
 // #!/usr/bin/env node
-
+//
 //  if (!global.logger){ global.logger = require('my_logger'); }
 // @ GLOBAL MODULES
 /* global */
