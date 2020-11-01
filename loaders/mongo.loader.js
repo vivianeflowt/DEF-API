@@ -24,11 +24,13 @@ module.exports.load = async () => {
     })
     .catch((error) => {
       logger.log('error', error);
+      console.log(error);
       process.exit(1);
     });
 
   mongoose.connection.on('error', (error) => {
     logger.log('error', error);
+    console.log(error);
     process.exit(1);
   });
 };

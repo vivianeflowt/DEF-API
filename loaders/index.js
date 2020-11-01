@@ -1,7 +1,9 @@
 const expressLoader = require('./express.loader');
-const mongooseLoader = require('./mongoose.loader');
+const mongooseLoader = require('./mongo.loader');
+const postgresLoader = require('./postgres.load');
 
 module.exports = {
   express: expressLoader,
-  mongoose: mongooseLoader,
+  mongo: mongooseLoader,
+  postgres: postgresLoader
 };
