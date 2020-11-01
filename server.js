@@ -62,37 +62,37 @@ const testLogger = () => {
     //   }, Math.floor(Math.random() * 11 * 10));
     // }
     // for (let index = 0; index < Math.floor(Math.random() * 11 * 5); index++) {
-    //   setTimeout(() => {
-    //     logger.log('data', 'http');
-    //   }, Math.floor(Math.random() * 11));
-    // }
-    setTimeout(() => {
-      logger.log('info', 'Viviane');
-    }, Math.floor(Math.random() * 11 * 100));
-    setTimeout(() => {
-      logger.log('warn', 'Viviane');
-    }, Math.floor(Math.random() * 11 * 300));
-    setTimeout(() => {
-      logger.log('error', 'Viviane');
-    }, Math.floor(Math.random() * 11 * 20000));
-    setTimeout(() => {
-      logger.log('info', 'tick');
-    }, 10000);
-  }, 1000);
-};
+//     //   setTimeout(() => {
+//     //     logger.log('data', 'http');
+//     //   }, Math.floor(Math.random() * 11));
+//     // }
+//     setTimeout(() => {
+//       logger.log('info', 'Viviane');
+//     }, Math.floor(Math.random() * 11 * 100));
+//     setTimeout(() => {
+//       logger.log('warn', 'Viviane');
+//     }, Math.floor(Math.random() * 11 * 300));
+//     setTimeout(() => {
+//       logger.log('error', 'Viviane');
+//     }, Math.floor(Math.random() * 11 * 20000));
+//     setTimeout(() => {
+//       logger.log('info', 'tick');
+//     }, 10000);
+//   }, 1000);
+// };
 
-const testLogger2 = () => {
-  setInterval(() => {
-    console.log('');
-    logger.log('error', 'Viviane');
-    logger.log('debug', 'Viviane');
-    logger.log('warn', 'Viviane');
-    logger.log('data', 'Viviane');
-    logger.log('info', 'Viviane');
-    logger.log('verbose', 'Viviane');
-    logger.log('app', 'Viviane');
-    logger.log('api', 'Viviane');
-    logger.log('http', 'Viviane');
-    console.log('');
-  }, 2000);
-};
+// const testLogger2 = () => {
+//   setInterval(() => {
+//     console.log('');
+//     logger.log('error', 'Viviane');
+//     logger.log('debug', 'Viviane');
+//     logger.log('warn', 'Viviane');
+//     logger.log('data', 'Viviane');
+//     logger.log('info', 'Viviane');
+//     logger.log('verbose', 'Viviane');
+//     logger.log('app', 'Viviane');
+//     logger.log('api', 'Viviane');
+//     logger.log('http', 'Viviane');
+//     console.log('');
+//   }, 2000);
+// };
