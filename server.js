@@ -13,6 +13,7 @@ const { logger, config } = global;
 // const keys = require('./utils/keys');
 
 console.clear();
+logger.log('app', 'Start Server...');
 
 // setTimeout(() => {
 //   console.log('');

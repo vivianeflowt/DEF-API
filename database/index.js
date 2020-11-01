@@ -34,3 +34,5 @@ module.exports.connect = async () => {
     process.exit(1);
   });
 };
+
+module.exports.db = mongoose.connection;
