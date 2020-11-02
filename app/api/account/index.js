@@ -39,12 +39,34 @@ const removeAll = async (req, res) => {
   return res.status(406).json(result);
 };
 
+const find = async (req, res) => {
+  console.log(req.params);
+  // res.json({ message: 'Remove Account' });
+  const result = await AccountService.Find();
+  if (result.success) {
+    return res.status(200).json(result);
+  }
+  return res.status(406).json(result);
+};
+
+const update = async (req, res) => {
+  const { email, values } = req.body;
+
+  // res.json({ message: 'Remove Account' });
+  const result = await AccountService.Update({ email, values });
+  if (result.success) {
+    return res.status(200).json(result);
+  }
+  return res.status(406).json(result);
+};
+
 // @ ROUTES
 router.use(authorization);
-// router.get('/', find);
+router.get('/', find);
+// router.get('/:id', findById);
 router.post('/', signup);
-// router.put('/', update);
-// router.patch('/', update);
+router.put('/', update);
+router.patch('/', update);
 router.delete('/', removeAll);
 
 module.exports = router;

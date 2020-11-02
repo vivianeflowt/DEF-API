@@ -53,9 +53,10 @@
     "http": "0.0.1-security",
     "jsonwebtoken": "8.5.1",
     "mongoose": "5.10.11",
-    "mongoose-type-email": "1.0.13",
     "mongoose-unique-validator": "2.0.3",
+    "mongoose-validator": "2.1.0",
     "morgan": "1.10.0",
+    "normalize-mongoose": "0.0.1",
     "validate.js": "0.13.1",
     "validator": "13.1.17",
     "winston": "3.3.3"

@@ -5,7 +5,7 @@ const DEF_SERVICE_MESSAGE = {
   message: null
 };
 
-const MessageBuilder = async (data = {}) => {
+const MessageBuilder = (data = {}) => {
   const result = {};
   Object.assign(result, DEF_SERVICE_MESSAGE);
   Object.assign(result, data);
@@ -23,36 +23,48 @@ const Create = async (options = {}) => {
       password: password || ''
     });
     await account.save();
-    return await MessageBuilder({ success: true, id: account.id });
+    return MessageBuilder({ success: true, id: account.id });
   } catch (error) {
     console.log(error);
-    return await MessageBuilder({ success: false, error });
+    return MessageBuilder({ success: false, error });
   }
 };
 
-// const Update = (AccountDetails = {}) => {
-//   //
-// };
+const Find = async (options = {}) => {
+  try {
+    const result = await Account.find({}).select('name username email').limit(50).exec();
+    // console.log(result);
+    return MessageBuilder({ success: true, result });
+  } catch (error) {
+    return MessageBuilder({ success: false, error });
+  }
+};
 
-// const Remove = (AccountDetails = {}) => {
-//   //
-// };
+const Update = async (options = {}) => {
+  const { email, values } = options;
+  try {
+    const account = await Account.updateOne({ email }, values);
 
-// const Find = (AccountDetails = {}) => {
-//   //
-// };
+    // console.log(result);
+    return MessageBuilder({ success: true, id: account.id });
+  } catch (error) {
+    return MessageBuilder({ success: false, error });
+  }
+};
 
 const RemoveAll = async () => {
   try {
     const result = await Account.deleteMany({}).exec();
     console.log(result);
-    return await MessageBuilder({ success: true, result });
+    return MessageBuilder({ success: true, result });
   } catch (error) {
-    return await MessageBuilder({ success: false, error });
+    return MessageBuilder({ success: false, error });
   }
 };
 
 module.exports = {
   Create,
+  Find,
+  Update,
   RemoveAll
 };
