@@ -36,9 +36,13 @@ const AccountSchema = new Schema({
   },
   active: {
     type: Boolean,
-    default: false
+    default: true
   },
   createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updateAt: {
     type: Date,
     default: Date.now
   }
@@ -51,6 +55,15 @@ AccountSchema.pre('save', async function save(next) {
   try {
     const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
     this.password = await bcrypt.hash(this.password, salt);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
+});
+
+AccountSchema.pre('save', async function save(next) {
+  try {
+    this.updateAt = Date.now();
     return next();
   } catch (err) {
     return next(err);
