@@ -1,13 +1,13 @@
 const Account = require('../database/models/Account');
 
-const DEF_MESSAGE = {
+const DEF_SERVICE_MESSAGE = {
   success: null,
   message: null
 };
 
 const MessageBuilder = async (data = {}) => {
   const result = {};
-  Object.assign(result, DEF_MESSAGE);
+  Object.assign(result, DEF_SERVICE_MESSAGE);
   Object.assign(result, data);
   result.success = data.success || null;
   result.message = data.message || '';
