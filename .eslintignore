@@ -1,6 +1,7 @@
 node_modules
-doc
+docs
 scripts
 .history
 jest.config.js
 tests
+.vscode

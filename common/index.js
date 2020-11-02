@@ -1,7 +1,5 @@
-const config = require('./config');
-const icons = require('./icons');
+const config = require('./config/config');
 
 module.exports = {
-  config,
-  icons,
+  config
 };

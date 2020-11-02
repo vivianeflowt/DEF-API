@@ -30,7 +30,7 @@ const Create = async (options = {}) => {
   }
 };
 
-const Find = async (options = {}) => {
+const Find = async () => {
   try {
     const result = await Account.find({}).select('name username email').limit(50).exec();
     // console.log(result);

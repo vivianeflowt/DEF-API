@@ -82,7 +82,7 @@ const AccountSchema = new Schema({
 
 AccountSchema.plugin(PluginUnique);
 
-AccountSchema.pre('save', async function save(next) {
+AccountSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   try {
     const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
@@ -93,7 +93,7 @@ AccountSchema.pre('save', async function save(next) {
   }
 });
 
-AccountSchema.pre('save', async function save(next) {
+AccountSchema.pre('save', async function (next) {
   if (!this.isModified('email')) return next();
   try {
     this.isVerified = false;
