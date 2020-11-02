@@ -1,5 +1,19 @@
 const Account = require('../database/models/Account');
 
+const DEF_MESSAGE = {
+  success: null,
+  message: null
+};
+
+const MessageBuilder = async (data = {}) => {
+  const result = {};
+  Object.assign(result, DEF_MESSAGE);
+  Object.assign(result, data);
+  result.success = data.success || null;
+  result.message = data.message || '';
+  return result;
+};
+
 const Create = async (options = {}) => {
   const { username, email, password } = options;
   try {
@@ -9,10 +23,10 @@ const Create = async (options = {}) => {
       password: password || ''
     });
     await account.save();
-    return { success: true, id: account.id };
+    return await MessageBuilder({ success: true, id: account.id });
   } catch (error) {
     console.log(error);
-    return { success: false, error };
+    return await MessageBuilder({ success: false, error });
   }
 };
 
@@ -32,9 +46,9 @@ const RemoveAll = async () => {
   try {
     const result = await Account.deleteMany({}).exec();
     console.log(result);
-    return { success: true, result };
+    return await MessageBuilder({ success: true, result });
   } catch (error) {
-    return { success: false, error };
+    return await MessageBuilder({ success: false, error });
   }
 };
 
