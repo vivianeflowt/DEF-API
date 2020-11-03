@@ -2,13 +2,13 @@
 const express = require('express');
 
 const router = express.Router();
-const AuthenticationService = require('../../services/Authentication.Service');
+const AuthorizationService = require('../../services/Authorization.Service');
 
 // @ Controller
 
 const login = async (req, res) => {
   const { username, email, password } = req.body;
-  const result = await AuthenticationService.SignIn({ username, email, password });
+  const result = await AuthorizationService.SignIn({ username, email, password });
   if (result.success) {
     return res.status(200).json(result);
   }
