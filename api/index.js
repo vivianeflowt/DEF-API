@@ -4,12 +4,12 @@ const express = require('express');
 
 const router = express.Router();
 const mongoose = require('mongoose');
-const ApiRouter = require('./api');
-//const DebugMiddleware = require('./middlewares/debug');
-// const Credencial = require('../database/models/Credencial');
+const AccountRouter = require('./account/api.account');
+const AuthRouter = require('./auth/api.auth');
+const SecurityRouter = require('./security/api.security');
 
 // @ MAIN MIDDLEWARE
-//router.use(DebugMiddleware);
+// router.use(DebugMiddleware);
 
 // @ ROOT ROUTER
 router.get('/', async (req, res) => {
@@ -20,9 +20,6 @@ router.get('/', async (req, res) => {
     return res.status(400).json({ success: false, error });
   }
 });
-
-// @ API ROUTER
-router.use('/api', ApiRouter);
 
 // // @ DEBUG ROUTER
 // router.post('/debug', async (req, res) => {
@@ -59,5 +56,9 @@ router.delete('/debug', async (req, res) => {
     success: true
   });
 });
+
+router.use('/api/account', AccountRouter);
+router.use('/api/auth', AuthRouter);
+router.use('/api/security', SecurityRouter);
 
 module.exports = router;

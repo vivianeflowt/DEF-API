@@ -2,22 +2,7 @@
 const express = require('express');
 
 const router = express.Router();
-const AccountService = require('../../../services/Account.Service');
-
-// @ MIDDLEWARE
-const authorization = async (req, res, next) => {
-  try {
-    console.log(' . account authorization middleware');
-  } catch (error) {
-    console.log(' . account authorization middleware');
-    console.log(error);
-  }
-  next();
-};
-
-// @ Controller
-
-// const Account = require('../../models/Account');
+const AccountService = require('../../services/Account.Service');
 
 // @ Controller
 
@@ -61,7 +46,6 @@ const update = async (req, res) => {
 };
 
 // @ ROUTES
-router.use(authorization);
 router.get('/', find);
 // router.get('/:id', findById);
 router.post('/', signup);

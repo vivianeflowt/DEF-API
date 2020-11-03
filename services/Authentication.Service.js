@@ -3,14 +3,13 @@ const Account = require('../database/models/Account');
 
 const { config } = global;
 
-const Authenticate = async (options = {}) => {
+const SignIn = async (options = {}) => {
   const { username, email, password } = options;
   console.log(options);
   try {
     const account = await Account.findOne({ $or: [{ email }, { username }] }).exec();
     if (!account) return { success: false };
     const isVerified = (await account.verifyPassword(password)) || false;
-
     if (!isVerified) {
       return { success: false };
     }
@@ -27,5 +26,5 @@ const Authenticate = async (options = {}) => {
 };
 
 module.exports = {
-  Authenticate
+  SignIn
 };

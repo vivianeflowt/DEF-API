@@ -1,15 +1,14 @@
 // @
 const express = require('express');
-const AuthenticationService = require('../../../services/Authentication.Service');
 
 const router = express.Router();
-const AccountService = require('../../../services/Authentication.Service');
+const AuthenticationService = require('../../services/Authentication.Service');
 
 // @ Controller
 
 const login = async (req, res) => {
   const { username, email, password } = req.body;
-  const result = await AuthenticationService.Authenticate({ username, email, password });
+  const result = await AuthenticationService.SignIn({ username, email, password });
   if (result.success) {
     return res.status(200).json(result);
   }
@@ -20,6 +19,8 @@ const login = async (req, res) => {
 // router.use(authorization);
 // router.get('/', find);
 // router.get('/:id', findById);
+router.post('/login', login);
+router.post('/signin', login);
 router.post('/', login);
 // router.put('/', update);
 // router.patch('/', update);

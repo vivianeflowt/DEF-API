@@ -19,7 +19,6 @@ logger.log('app', 'Start Server...');
 //   }, 50000);
 // };
 
-
 // @ EXPRESS LOADER
 const express = require('express');
 const http = require('http');
@@ -27,7 +26,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
-const application = require('./app');
+const ApiRoutes = require('./api');
 
 const database = require('./database');
 
@@ -49,7 +48,7 @@ const init = async () => {
   // #
 
   app.use(morgan(' - :method :url :status :res[content-length] - :response-time ms'));
-  app.use(application);
+  app.use(ApiRoutes);
 
   await database.connect();
 
