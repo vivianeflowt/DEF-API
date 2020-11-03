@@ -1,4 +1,7 @@
+const jwtwebtoken = require('jsonwebtoken');
 const Account = require('../database/models/Account');
+
+const { config } = global;
 
 const Authenticate = async (options = {}) => {
   const { username, email, password } = options;
@@ -8,7 +11,16 @@ const Authenticate = async (options = {}) => {
     if (!account) return { success: false };
     const isVerified = (await account.verifyPassword(password)) || false;
 
-    return { success: isVerified };
+    if (!isVerified) {
+      return { success: false };
+    }
+    const { id } = account;
+    console.log(id);
+    const token = jwtwebtoken.sign({ id }, config.security.key.private, {
+      expiresIn: 300 // expires in 5min
+    });
+
+    return { success: isVerified, token };
   } catch (error) {
     return { success: false, error };
   }
