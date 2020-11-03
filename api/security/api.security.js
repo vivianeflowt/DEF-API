@@ -3,7 +3,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { Authorization } = require('../middlewares/authorization');
+const Authentication = require('../middlewares/authentication');
 
 // @ Controller
 
@@ -14,7 +14,7 @@ const debug = async (req, res) => {
   return res.status(400).json({ message: 'security', method });
 };
 
-router.use(Authorization);
+router.use(Authentication);
 // @ ROUTES
 // router.use(authorization);
 router.get('/', debug);
