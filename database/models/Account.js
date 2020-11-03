@@ -122,11 +122,12 @@ AccountSchema.pre('save', async function save(next) {
   }
 });
 
-AccountSchema.methods.checkPassword = function (candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
+AccountSchema.methods.verifyPassword = async function (password) {
+  try {
+    return await bcrypt.compare(password, this.password);
+  } catch {
+    return false;
+  }
 };
 
 const AccountModel = mongoose.model('Account', AccountSchema);

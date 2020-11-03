@@ -5,11 +5,11 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const ApiRouter = require('./api');
-const DebugMiddleware = require('./middlewares/debug');
+//const DebugMiddleware = require('./middlewares/debug');
 // const Credencial = require('../database/models/Credencial');
 
 // @ MAIN MIDDLEWARE
-router.use(DebugMiddleware);
+//router.use(DebugMiddleware);
 
 // @ ROOT ROUTER
 router.get('/', async (req, res) => {

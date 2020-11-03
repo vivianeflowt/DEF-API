@@ -1,35 +1,46 @@
 const Account = require('../database/models/Account');
 
-const DEF_SERVICE_MESSAGE = {
-  success: null,
-  message: null
-};
-
-const MessageBuilder = (data = {}) => {
-  const result = {};
-  Object.assign(result, DEF_SERVICE_MESSAGE);
-  Object.assign(result, data);
-  result.success = data.success || null;
-  result.message = data.message || '';
-  return result;
-};
-
 const Authenticate = async (options = {}) => {
   const { username, email, password } = options;
   console.log(options);
+  if (email !== undefined) {
+    try {
+      const result = await VerifyByEmail({ email, password });
+      console.log(result);
+      return { success: result };
+    } catch (error) {
+      return { success: false, error };
+    }
+  } else {
+    try {
+      const result = await VerifyByUserName({ username, password });
+      console.log(result);
+      return { success: result };
+    } catch (error) {
+      return { success: false, error };
+    }
+  }
+};
+
+const VerifyByEmail = async (options = {}) => {
+  const { email, password } = options;
   try {
-    const account = await Account.findOne({ username, email }).exec();
-    if (!account) return MessageBuilder({ success: false, message: 'access denied' });
+    const account = await Account.findOne({ email }).exec();
+    if (!account) return false;
+    return await account.verifyPassword(password);
+  } catch {
+    return false;
+  }
+};
 
-    account.checkPassword(password, (error, isMatch) => {
-      if (error) throw error;
-      console.log(password, isMatch); // -&gt; Password123: true
-    });
-
-    return MessageBuilder({ success: true });
-  } catch (error) {
-    console.log(error);
-    return MessageBuilder({ success: false, error });
+const VerifyByUserName = async (options = {}) => {
+  const { username, password } = options;
+  try {
+    const account = await Account.findOne({ username }).exec();
+    if (!account) return false;
+    return await account.verifyPassword(password);
+  } catch {
+    return false;
   }
 };
 
