@@ -1,19 +1,18 @@
-const jwtwebtoken = require('jsonwebtoken');
+// const jwtwebtoken = require('jsonwebtoken');
 
-const { config } = global;
+// const { config } = global;
+const AuthorizationService = require('../../services/Authorization.Service');
 
 module.exports = async (req, res, next) => {
   const token = req.headers['x-access-token'];
-  if (!token) {
-    return res.status(401).send({ auth: false, message: 'No token provided.' });
+  const result = await AuthorizationService.Verify({ token });
+
+  if (!result.authorization) {
+    return res
+      .status(400)
+      .send({ authorization: result.authorization, message: 'Failed to authenticate token.' });
   }
 
-  jwtwebtoken.verify(token, config.security.key.private, (error, decoded) => {
-    if (error) {
-      return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-    }
-    // se tudo estiver ok, salva no request para uso posterior
-    req.accountId = decoded.id;
-    next();
-  });
+  req.body.decoded = result.decoded;
+  next();
 };

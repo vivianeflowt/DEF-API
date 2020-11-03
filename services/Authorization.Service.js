@@ -26,6 +26,22 @@ const SignIn = async (options = {}) => {
   }
 };
 
+const Verify = async (options = {}) => {
+  const { token } = options;
+
+  if (!token) {
+    return { authorization: false, message: 'no token provided.' };
+  }
+
+  const decoded = await jwtwebtoken.decode(token, { complete: true });
+  if (!decoded) {
+    return { authorization: false, message: 'invalid token' };
+  }
+  // console.log(decoded);
+  return { authorization: true, decoded };
+};
+
 module.exports = {
-  SignIn
+  SignIn,
+  Verify
 };

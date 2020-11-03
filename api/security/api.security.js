@@ -10,6 +10,7 @@ const Authorization = require('../middlewares/authorization');
 const debug = async (req, res) => {
   //
   const { method } = req;
+  console.log(req.body.decoded);
 
   return res.status(200).json({ message: 'security', method });
 };
