@@ -30,7 +30,7 @@ const Verify = async (options = {}) => {
   const { token } = options;
 
   if (!token) {
-    return { authorization: false, message: 'no token provided.' };
+    return { authorization: false, message: 'no token provided' };
   }
 
   const decoded = await jwtwebtoken.decode(token, { complete: true });

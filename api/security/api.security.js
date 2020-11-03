@@ -10,9 +10,9 @@ const Authorization = require('../middlewares/authorization');
 const debug = async (req, res) => {
   //
   const { method } = req;
-  console.log(req.body.decoded);
+  // console.log(req.body);
 
-  return res.status(200).json({ message: 'security', method });
+  return res.status(200).json({ message: 'security', method, content: req.body });
 };
 
 router.use(Authorization);
