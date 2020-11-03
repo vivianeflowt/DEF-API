@@ -117,10 +117,17 @@ AccountSchema.pre('save', async function save(next) {
   try {
     this.updateAt = Date.now();
     return next();
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 });
+
+AccountSchema.methods.checkPassword = function (candidatePassword, cb) {
+  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
+};
 
 const AccountModel = mongoose.model('Account', AccountSchema);
 
