@@ -1,11 +1,16 @@
 require('dotenv').config();
 
+const keys = require('../utils/keys');
+
 module.exports = {
   enviroment: {
     nodeenv: process.env.NODE_ENV || ''
   },
   application: {
     name: process.env.APP_NAME || 'APP'
+  },
+  path: {
+    root: process.cwd()
   },
   server: {
     host: process.env.SERVER_HOST || 'localhost',
@@ -36,6 +41,10 @@ module.exports = {
     }
   },
   security: {
+    key: {
+      public: keys.getPublicKey(),
+      private: keys.getPrivateKey()
+    },
     secret1: process.env.SECRET1 || '',
     secret2: process.env.SECRET2 || ''
   }

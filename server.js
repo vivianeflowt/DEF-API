@@ -9,17 +9,8 @@ Object.assign(global, { logger: require('./common/log/logger') });
 // @ SERVER
 const { logger, config } = global;
 
-// const fs = require('fs');
-// const keys = require('./utils/keys');
-
 console.clear();
 logger.log('app', 'Start Server...');
-
-// setTimeout(() => {
-//   console.log('');
-//   devlogger.keys('PUBLIC  ' + fs.readFileSync('./security/public.key'));
-//   devlogger.keys('PRIVATE ' + fs.readFileSync('./security/private.key'));
-// }, 5000);
 
 // const startConsoleClear = () => {
 //   setInterval(() => {
@@ -101,3 +92,10 @@ init();
 //     console.log('');
 //   }, 2000);
 // };
+
+setTimeout(() => {
+  console.log('');
+  console.log(config.security.key.public);
+  console.log(config.security.key.private);
+  console.log('');
+}, 3000);

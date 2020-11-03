@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+//@ Keys GENERATOR /
+
+const keys = require('../common/utils/keys');
+
+(function () {
+  console.clear();
+  console.log('PUBLIC KEY:');
+  console.log(keys.generatePublicKey());
+  console.log('PRIVATE KEY:');
+  console.log(keys.generatePrivateKey());
+})();
