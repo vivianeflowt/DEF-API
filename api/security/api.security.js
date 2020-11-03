@@ -11,7 +11,7 @@ const debug = async (req, res) => {
   //
   const { method } = req;
 
-  return res.status(400).json({ message: 'security', method });
+  return res.status(200).json({ message: 'security', method });
 };
 
 router.use(Authentication);

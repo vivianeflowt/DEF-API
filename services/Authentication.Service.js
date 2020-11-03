@@ -21,6 +21,7 @@ const SignIn = async (options = {}) => {
 
     return { success: isVerified, token };
   } catch (error) {
+    console.log(error);
     return { success: false, error };
   }
 };

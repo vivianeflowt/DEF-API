@@ -45,6 +45,9 @@ module.exports = {
       public: keys.getPublicKey(),
       private: keys.getPrivateKey()
     },
+    token: {
+      expiretime: '15m'
+    },
     secret1: process.env.SECRET1 || '',
     secret2: process.env.SECRET2 || ''
   }
