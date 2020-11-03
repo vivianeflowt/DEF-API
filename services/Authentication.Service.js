@@ -1,27 +1,5 @@
 const Account = require('../database/models/Account');
 
-const Authenticate = async (options = {}) => {
-  const { username, email, password } = options;
-  console.log(options);
-  if (email !== undefined) {
-    try {
-      const result = await VerifyByEmail({ email, password });
-      console.log(result);
-      return { success: result };
-    } catch (error) {
-      return { success: false, error };
-    }
-  } else {
-    try {
-      const result = await VerifyByUserName({ username, password });
-      console.log(result);
-      return { success: result };
-    } catch (error) {
-      return { success: false, error };
-    }
-  }
-};
-
 const VerifyByEmail = async (options = {}) => {
   const { email, password } = options;
   try {
@@ -41,6 +19,27 @@ const VerifyByUserName = async (options = {}) => {
     return await account.verifyPassword(password);
   } catch {
     return false;
+  }
+};
+
+const Authenticate = async (options = {}) => {
+  const { username, email, password } = options;
+  console.log(options);
+  try {
+    const message = {
+      success: null
+    };
+    if (email !== undefined) {
+      message.success = await VerifyByEmail({ email, password });
+    } else if (username !== undefined) {
+      message.success = await VerifyByUserName({ username, password });
+    } else {
+      message.success = false;
+    }
+    console.log(message);
+    return message;
+  } catch (error) {
+    return { success: false, error };
   }
 };
 
