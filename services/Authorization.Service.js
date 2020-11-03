@@ -1,4 +1,4 @@
-const jwtwebtoken = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const Account = require('../database/models/Account');
 
 const { config } = global;
@@ -14,11 +14,9 @@ const SignIn = async (options = {}) => {
       return { success: false };
     }
     const { id } = account;
-    console.log(id);
-    const token = jwtwebtoken.sign({ id }, config.security.key.private, {
+    const token = jwt.sign({ id }, config.security.key.private, {
       expiresIn: '120m'
     });
-
     return { success: isVerified, token };
   } catch (error) {
     console.log(error);
@@ -28,17 +26,19 @@ const SignIn = async (options = {}) => {
 
 const Verify = async (options = {}) => {
   const { token } = options;
-
   if (!token) {
     return { authorization: false, message: 'no token provided' };
   }
-
-  const decoded = await jwtwebtoken.decode(token, { complete: true });
+  const decoded = await jwt.decode(token, { complete: true });
   if (!decoded) {
     return { authorization: false, message: 'invalid token' };
   }
   // console.log(decoded);
   return { authorization: true, decoded };
+};
+
+const Refresh = async (options = {}) => {
+  //
 };
 
 module.exports = {
