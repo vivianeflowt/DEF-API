@@ -16,7 +16,7 @@ const SignIn = async (options = {}) => {
     const { id } = account;
     console.log(id);
     const token = jwtwebtoken.sign({ id }, config.security.key.private, {
-      expiresIn: 300 // expires in 5min
+      expiresIn: '120m'
     });
 
     return { success: isVerified, token };
