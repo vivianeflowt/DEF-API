@@ -41,7 +41,7 @@ module.exports = {
     }
   },
   security: {
-    prefix: process.env.SECURITY_PREFIX || '',
+    prefix: process.env.SECURITY_PREFIX || 'api',
     key: {
       public: keys.getPublicKey(),
       private: keys.getPrivateKey()
