@@ -16,7 +16,7 @@ const SignIn = async (options = {}) => {
     }
     const { id } = account;
     const token = jwt.sign({ id }, config.security.key.private, {
-      expiresIn: '120m'
+      expiresIn: '1h'
     });
     return { success: isVerified, token };
   } catch (error) {
@@ -36,7 +36,7 @@ const Verify = async (options = {}) => {
     return { authorization: false, message: 'invalid token' };
   }
   const refreshToken = await jwt.sign({ id: decoded.id }, config.security.key.private, {
-    expiresIn: '120m'
+    expiresIn: '1h'
   });
 
   return { authorization: true, token: refreshToken };
