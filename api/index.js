@@ -8,7 +8,7 @@ const AuthRouter = require('./auth/api.auth');
 const SecurityRouter = require('./security/api.security');
 const DebugRouter = require('./debug/api.debug');
 
-const MainRequest = require('./middlewares/MainRequest');
+const RequestAssert = require('./middlewares/RequestAssert');
 
 // @ ROOT ROUTER
 router.get('/', async (req, res) => {
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.use(MainRequest);
+router.use(RequestAssert);
 router.use('/api/account', AccountRouter);
 router.use('/api/auth', AuthRouter);
 router.use('/api/security', SecurityRouter);
