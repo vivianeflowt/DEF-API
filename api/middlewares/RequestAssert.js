@@ -1,10 +1,9 @@
 module.exports = async (req, res, next) => {
   console.log('MAIN-REQUEST-MIDDLEWARE');
-  req.body.data = {};
-  req.body.opt = {};
-  req.body.auth = {
-    authorized: false
+  req.headers.api = {
+    method: '',
+    options: ''
   };
-  console.log(req.body);
+  // console.log(req.body);
   next();
 };

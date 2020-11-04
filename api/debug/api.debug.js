@@ -11,9 +11,15 @@ const router = express.Router();
 const debug = async (req, res) => {
   //
   const { method } = req;
-  // console.log(req.body);
+  console.log(req.headers);
+  console.log(req.body);
 
-  return res.status(200).json({ message: 'debug', method, body: req.body });
+  return res.status(200).json({
+    message: 'debug',
+    method,
+    headers: req.headers,
+    body: req.body
+  });
 };
 
 const deleteDatabase = async (req, res) => {
