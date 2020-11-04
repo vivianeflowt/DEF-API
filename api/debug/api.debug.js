@@ -4,21 +4,16 @@ const mongoose = require('mongoose');
 
 const router = express.Router();
 
-// const Authorization = require('../middlewares/authorization');
-
+const Authorization = require('../middlewares/Authorization');
 // @ Controller
 
 const debug = async (req, res) => {
   //
   const { method } = req;
-  console.log(req.headers);
-  console.log(req.body);
 
   return res.status(200).json({
     message: 'debug',
-    method,
-    headers: req.headers,
-    body: req.body
+    method
   });
 };
 
