@@ -4,13 +4,21 @@ const express = require('express');
 const router = express.Router();
 const AuthorizationService = require('../../services/Authorization.Service');
 
+const { config } = global;
+
+const { prefix } = config.security;
+
+const headerToken = `${prefix}-access-token`;
+
 // @ Controller
 
 const login = async (req, res) => {
   const { username, email, password } = req.body;
   const result = await AuthorizationService.SignIn({ username, email, password });
+
   if (result.success) {
-    return res.status(200).json(result);
+    res.append(headerToken, result.token);
+    return res.status(200).json({ success: result.success, token: result.token });
   }
   return res.status(406).json(result);
 };

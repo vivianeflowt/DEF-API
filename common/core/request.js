@@ -2,9 +2,9 @@ const { config } = global;
 
 const { prefix } = config.security;
 
-const prefix_method = `x-${prefix}-method`;
-const prefix_access = `x-${prefix}-access`;
-const prefix_status = `x-${prefix}-status`;
+const prefix_method = `${prefix}-method`;
+const prefix_access = `${prefix}-access`;
+const prefix_status = `${prefix}-status`;
 
 const DEF_API_HEADERS = {
   headers: {
@@ -45,7 +45,7 @@ const headerSanitize = async (header) => {
   _header[`${prefix_status}-code`] = null;
   _header[`${prefix_status}-message`] = null;
   _header[`${prefix_status}-error`] = null;
-  console.log(_header);
+  // console.log(_header);
   return _header;
 };
 
