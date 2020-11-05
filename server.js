@@ -24,8 +24,8 @@ const helmet = require('helmet');
 
 const ApiRoutes = require('./api');
 
-// const mongo = require('./database/mongo');
-// const postgres = require('./database/postgres');
+const mongoose = require('./database/mongoose');
+const sequelize = require('./database/sequelize');
 
 const init = async () => {
   // import path from 'path'
