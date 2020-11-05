@@ -17,9 +17,9 @@ const sequelize = new Sequelize(uri, { logging: false });
 // Models
 const Post = PostModel(sequelize, Sequelize);
 
-module.exports.connect = async () => {
+module.exports.connect = async (force = true) => {
   await sequelize
-    .sync({ force: true })
+    .sync({ force })
     .then(() => {
       logger.log('app', 'Sequelize Connected...');
     })
