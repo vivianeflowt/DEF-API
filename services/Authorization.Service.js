@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const Account = require('../database/models/Account');
 
-const { config } = global;
+// const logger = require('./common/log');
+const config = require('../common/config/config');
 
 const privateKey = config.security.key.private;
 

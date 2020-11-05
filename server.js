@@ -1,23 +1,6 @@
 // #!/usr/bin/env node
 
-//  if (!global.logger){ global.logger = require('my_logger'); }
-// @ GLOBAL MODULES
-/* global */
-Object.assign(global, { config: require('./common/config/config') });
-Object.assign(global, { logger: require('./common/log/logger') });
-
-// @ SERVER
-const { logger, config } = global;
-
 console.clear();
-logger.log('app', 'Start Server...');
-
-// const startConsoleClear = () => {
-//   setInterval(() => {
-//     devlogger.clear();
-//     devlogger.report('Server Running...');
-//   }, 50000);
-// };
 
 // @ EXPRESS LOADER
 const express = require('express');
@@ -26,6 +9,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
+const logger = require('./common/log/logger');
+const config = require('./common/config/config');
 const ApiRoutes = require('./api');
 
 const database = require('./database');
@@ -34,6 +19,7 @@ const init = async () => {
   // import path from 'path'
   // import cookieParser from 'cookie-parser'
   // import rescue from 'express-rescue'
+  logger.log('app', 'Start Server...');
 
   const app = express();
   app.set(config.server.port);

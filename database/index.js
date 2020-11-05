@@ -1,7 +1,8 @@
-const { logger, config } = global;
+const mongoose = require('mongoose');
+const logger = require('../common/log/logger');
+const config = require('../common/config/config');
 
 // @ MONGODB LOADER
-const mongoose = require('mongoose');
 
 const getUri = () => {
   // mongodb://localhost:27017/test

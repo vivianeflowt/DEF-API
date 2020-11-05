@@ -1,6 +1,5 @@
-// const jwtwebtoken = require('jsonwebtoken');
-
-const { config } = global;
+// const logger = require('../../common/log/logger');
+const config = require('../../common/config/config');
 
 const { prefix } = config.security;
 

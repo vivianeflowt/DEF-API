@@ -1,50 +1,50 @@
-const { config } = global;
+const config = require('../config/config');
 
 const { prefix } = config.security;
 
-const prefix_method = `${prefix}-method`;
-const prefix_access = `${prefix}-access`;
-const prefix_status = `${prefix}-status`;
+const prefixMethod = `${prefix}-method`;
+const prefixAccess = `${prefix}-access`;
+const prefixStatus = `${prefix}-status`;
 
-const DEF_API_HEADERS = {
-  headers: {
-    method: {
-      name: null,
-      opt: null,
-      param: null
-    },
-    security: {
-      token: null,
-      auth: false,
-      account: {},
-      credencials: {}
-    },
-    status: {
-      success: false,
-      code: null,
-      message: '',
-      error: null
-    }
-  }
-};
+// const DEF_API_HEADERS = {
+//   headers: {
+//     method: {
+//       name: null,
+//       opt: null,
+//       param: null
+//     },
+//     security: {
+//       token: null,
+//       auth: false,
+//       account: {},
+//       credencials: {}
+//     },
+//     status: {
+//       success: false,
+//       code: null,
+//       message: '',
+//       error: null
+//     }
+//   }
+// };
 
 const headerSanitize = async (header) => {
   const _header = {};
   Object.assign(_header, header);
   //
-  _header[`${prefix_method}-name`] = header[`${prefix_method}-name`] || null;
-  _header[`${prefix_method}-opt`] = header[`${prefix_method}-opt`] || null;
-  _header[`${prefix_method}-param`] = header[`${prefix_method}-param`] || null;
+  _header[`${prefixMethod}-name`] = header[`${prefixMethod}-name`] || null;
+  _header[`${prefixMethod}-opt`] = header[`${prefixMethod}-opt`] || null;
+  _header[`${prefixMethod}-param`] = header[`${prefixMethod}-param`] || null;
   //
-  _header[`${prefix_access}-token`] = header[`${prefix_access}-token`] || null;
-  _header[`${prefix_access}-auth`] = null;
-  _header[`${prefix_access}-account`] = null;
-  _header[`${prefix_access}-credencials`] = null;
+  _header[`${prefixAccess}-token`] = header[`${prefixAccess}-token`] || null;
+  _header[`${prefixAccess}-auth`] = null;
+  _header[`${prefixAccess}-account`] = null;
+  _header[`${prefixAccess}-credencials`] = null;
   //
-  _header[`${prefix_status}-success`] = null;
-  _header[`${prefix_status}-code`] = null;
-  _header[`${prefix_status}-message`] = null;
-  _header[`${prefix_status}-error`] = null;
+  _header[`${prefixStatus}-success`] = null;
+  _header[`${prefixStatus}-code`] = null;
+  _header[`${prefixStatus}-message`] = null;
+  _header[`${prefixStatus}-error`] = null;
   // console.log(_header);
   return _header;
 };

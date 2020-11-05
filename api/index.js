@@ -7,7 +7,6 @@ const AccountsRouter = require('./accounts/api.accounts');
 const AuthRouter = require('./auth/api.auth');
 const SecurityRouter = require('./security/api.security');
 const DebugRouter = require('./debug/api.debug');
-
 const RequestSanitize = require('./middlewares/RequestSanitize');
 
 // @ ROOT ROUTER

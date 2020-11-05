@@ -4,7 +4,8 @@ const express = require('express');
 const router = express.Router();
 const AuthorizationService = require('../../services/Authorization.Service');
 
-const { config } = global;
+// const logger = require('../../common/log/logger');
+const config = require('../../common/config/config');
 
 const { prefix } = config.security;
 
