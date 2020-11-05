@@ -71,7 +71,13 @@
     "mongoose-unique-validator": "2.0.3",
     "mongoose-validator": "2.1.0",
     "morgan": "1.10.0",
+    "mysql2": "2.2.5",
+    "pg": "8.4.2",
+    "pg-hstore": "2.3.3",
     "pm2": "4.5.0",
+    "sequelize": "6.3.5",
+    "sequelize-cli": "6.2.0",
+    "sqlite3": "5.0.0",
     "validate.js": "0.13.1",
     "validator": "13.1.17",
     "winston": "3.3.3"

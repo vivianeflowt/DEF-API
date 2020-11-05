@@ -6,24 +6,25 @@ const config = require('@config');
 // @ MONGODB LOADER
 const mongoose = require('mongoose');
 
-const getUri = () => {
-  // mongodb://localhost:27017/test
-  const { host, port, database } = config.database.mongo;
-  return `mongodb://${host}:${port}/${database}`;
-};
+// const getUri = () => {
+//   // mongodb://localhost:27017/test
+//   const { host, port, database } = config.database.mongo;
+//   return `mongodb://${host}:${port}/${database}`;
+// };
 
 module.exports.connect = async () => {
-  const uri = getUri();
+  const { uri } = config.database.mongo;
+
   mongoose.Promise = global.Promise;
   mongoose.set('useNewUrlParser', true);
   mongoose.set('useFindAndModify', false);
   mongoose.set('useCreateIndex', true);
   mongoose.set('useUnifiedTopology', true);
-
+  // console.log(uri);
   await mongoose
     .connect(uri)
     .then(() => {
-      logger.log('app', 'Database Connected...');
+      logger.log('app', 'Mongo Connected...');
     })
     .catch((error) => {
       logger.log('error', error);

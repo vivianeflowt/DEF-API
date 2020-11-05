@@ -19,7 +19,8 @@ const helmet = require('helmet');
 
 const ApiRoutes = require('./api');
 
-const mongodb = require('./database/mongo');
+const mongo = require('./database/mongo');
+const postgres = require('./database/postgres');
 
 const init = async () => {
   // import path from 'path'
@@ -47,7 +48,8 @@ const init = async () => {
 
   app.use(ApiRoutes);
 
-  await mongodb.connect();
+  await mongo.connect();
+  await postgres.connect();
 
   // # Catch All
   app.use((error, req, res, next) => {
@@ -89,10 +91,10 @@ init();
 //   }, 2000);
 // };
 
-setTimeout(() => {
-  console.log('');
-  // onsole.log(config.security.key.public);
-  // console.log(config.security.key.private);
-  console.log(config);
-  console.log('');
-}, 3000);
+// setTimeout(() => {
+//   console.log('');
+//   // onsole.log(config.security.key.public);
+//   // console.log(config.security.key.private);
+//   console.log(config.database);
+//   console.log('');
+// }, 3000);
