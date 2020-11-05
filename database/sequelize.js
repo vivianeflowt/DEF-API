@@ -13,8 +13,8 @@ const PostModel = require('./sequelize/models/post.js');
 const { uri } = config.database.mysql;
 
 module.exports.connect = async () => {
-  //const sequelize = new Sequelize(uri);
-  const sequelize = new Sequelize(uri,{ logging: false }));
+  // const sequelize = new Sequelize(uri);
+  const sequelize = new Sequelize(uri, { logging: false });
 
   //
   /* eslint-disable */
@@ -22,7 +22,7 @@ module.exports.connect = async () => {
   /* eslint-enable */
 
   //
-  sequelize
+  await sequelize
     .sync({ force: true })
     .then(() => {
       logger.log('app', 'Sequelize Connected...');

@@ -53,7 +53,7 @@ const init = async () => {
 
   app.use(ApiRoutes);
 
-  // await mongo.connect();
+  await mongoose.connect();
   await sequelize.connect();
 
   // # Catch All
