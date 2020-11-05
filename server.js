@@ -1,11 +1,14 @@
 // #!/usr/bin/env node
-
 //
 require('module-alias/register');
 require('dotenv').config();
-
 //
 console.clear();
+/* eslint-disable */
+const logger = require('@logger');
+const config = require('@config');
+/* eslint-enable */
+
 // @ EXPRESS LOADER
 const express = require('express');
 const http = require('http');
@@ -13,10 +16,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
-/* eslint-disable */
-const logger = require('@logger');
-const config = require('@config');
-/* eslint-enable */
+
 const ApiRoutes = require('./api');
 
 const database = require('./database');
@@ -28,7 +28,11 @@ const init = async () => {
   logger.log('app', 'Start Server...');
 
   const app = express();
-  app.set(config.server.port);
+  // #
+  app.set('host', process.env.SERVER_HOST);
+  app.set('port', process.env.SERVER_PORT);
+  app.set('env', process.env.NODE_ENV);
+  app.set('x-powered-by', false);
   // #
   app.use(helmet());
   app.use(compression());
@@ -40,6 +44,7 @@ const init = async () => {
   // #
 
   app.use(morgan(' - :method :url :status :res[content-length] - :response-time ms'));
+
   app.use(ApiRoutes);
 
   await database.connect();
@@ -84,10 +89,10 @@ init();
 //   }, 2000);
 // };
 
-setTimeout(() => {
-  console.log('');
-  // onsole.log(config.security.key.public);
-  // console.log(config.security.key.private);
-  console.log(config);
-  console.log('');
-}, 3000);
+// setTimeout(() => {
+//   console.log('');
+//   // onsole.log(config.security.key.public);
+//   // console.log(config.security.key.private);
+//   console.log(config);
+//   console.log('');
+// }, 3000);
