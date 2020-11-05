@@ -24,6 +24,8 @@
     "@logger": "./common/log/logger.js",
     "@services": "./services",
     "@database": "./database/database.js",
+    "@mongoose": "./database/mongoose",
+    "@sequelize": "./database/sequelize",
     "@core": "./common/core",
     "@constants": "./common/constants",
     "@validators": "./common/validators",

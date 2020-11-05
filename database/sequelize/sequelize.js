@@ -32,6 +32,6 @@ module.exports.connect = async () => {
 
 module.exports.db = sequelize;
 
-module.exports.models = {
+module.exports.model = {
   Post
 };

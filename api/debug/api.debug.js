@@ -11,7 +11,9 @@ const router = express.Router();
 // const Authorization = require('../middlewares/Authorization');
 // @ Controller
 
-// const Post = require('@models/Post');
+/* eslint-disable */
+const Post = require('@database').sequelize.model.Post;
+/* eslint-enable */
 
 const debug = async (req, res) => {
   //
@@ -19,6 +21,20 @@ const debug = async (req, res) => {
 
   return res.status(200).json({
     message: 'debug',
+    method
+  });
+};
+
+const debug2 = async (req, res) => {
+  //
+  const { method } = req;
+
+  const newpost = await Post.create({ text: 'lalalal' });
+
+  console.log(newpost.text);
+
+  return res.status(200).json({
+    message: newpost.text,
     method
   });
 };
@@ -38,7 +54,7 @@ const deleteDatabase = async (req, res) => {
 // router.use(Authorization);
 // @ ROUTES
 // router.use(authorization);
-router.get('/', debug);
+router.get('/', debug2);
 router.post('/', debug);
 router.post('/', debug);
 router.put('/', debug);
