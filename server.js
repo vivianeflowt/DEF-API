@@ -54,7 +54,7 @@ const init = async () => {
   app.use(ApiRoutes);
 
   // await mongo.connect();
-  // await postgres.connect();
+  await sequelize.connect();
 
   // # Catch All
   app.use((error, req, res, next) => {

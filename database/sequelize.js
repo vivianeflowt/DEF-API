@@ -1,36 +1,35 @@
 /* eslint-disable */
+'use strict';
+/* eslint-enable */
+
+/* eslint-disable */
 const logger = require('@logger');
 const config = require('@config');
 /* eslint-enable */
 
-// @ MONGODB LOADER
 const Sequelize = require('sequelize');
-// const Post = require('./models/Post');
+const PostModel = require('./sequelize/models/post.js');
 
-// const getUri = () => {
-//   const {
-//     host, port, user, password, database
-//   } = config.database.postgres;
-//   return `postgres://${user}:${password}@${host}:${port}/${database}`;
-// };
+const { uri } = config.database.mysql;
+
 module.exports.connect = async () => {
-  const { uri } = config.database.mysql;
-  // const sequelize = new Sequelize(uri, { logging: false });
-  const sequelize = new Sequelize(uri);
+  //const sequelize = new Sequelize(uri);
+  const sequelize = new Sequelize(uri,{ logging: false }));
 
-  // console.log(uri);
+  //
+  /* eslint-disable */
+  const Post = PostModel(sequelize, Sequelize);
+  /* eslint-enable */
 
-  await sequelize
-    .authenticate()
+  //
+  sequelize
+    .sync({ force: true })
     .then(() => {
-      logger.log('app', 'Mysql Connected...');
+      logger.log('app', 'Sequelize Connected...');
     })
     .catch((error) => {
       logger.log('error', error);
       console.log(error);
       process.exit(1);
     });
-  global.sequelize = sequelize;
 };
-
-// module.exports.db = sequelize.
