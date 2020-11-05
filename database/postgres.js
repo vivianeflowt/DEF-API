@@ -5,6 +5,7 @@ const config = require('@config');
 
 // @ MONGODB LOADER
 const Sequelize = require('sequelize');
+// const Post = require('./models/Post');
 
 // const getUri = () => {
 //   const {
@@ -27,6 +28,7 @@ module.exports.connect = async () => {
       console.log(error);
       process.exit(1);
     });
+  global.sequelize = sequelize;
 };
 
 // module.exports.db = sequelize.

@@ -7,6 +7,8 @@ const router = express.Router();
 // const Authorization = require('../middlewares/Authorization');
 // @ Controller
 
+const Post = require('@models/Post');
+
 const debug = async (req, res) => {
   //
   const { method } = req;
