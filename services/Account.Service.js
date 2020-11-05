@@ -2,6 +2,9 @@
 const Account = require('@models/Account');
 /* eslint-enable */
 
+// TODO Feature: Update Account Settings
+// TODO Feature: Confirm E-mail
+
 const Create = async (options = {}) => {
   const { username, email, password } = options;
   try {
