@@ -1,3 +1,4 @@
 https://imasters.com.br/desenvolvimento/gerenciando-o-fluxo-assincrono-de-operacoes-em-nodejs
 https://sematext.com/blog/expressjs-best-practices/
 https://blog.risingstack.com/10-best-practices-for-writing-node-js-rest-apis/
+https://ajuda.locaweb.com.br/wiki/resolver-caracteres-acentuados-no-mysql/

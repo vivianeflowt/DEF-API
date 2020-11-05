@@ -19,7 +19,7 @@ const helmet = require('helmet');
 
 const ApiRoutes = require('./api');
 
-const database = require('./database');
+const mongodb = require('./database/mongo');
 
 const init = async () => {
   // import path from 'path'
@@ -47,7 +47,7 @@ const init = async () => {
 
   app.use(ApiRoutes);
 
-  await database.connect();
+  await mongodb.connect();
 
   // # Catch All
   app.use((error, req, res, next) => {
