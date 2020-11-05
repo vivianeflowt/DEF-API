@@ -2,10 +2,10 @@
 const express = require('express');
 
 const router = express.Router();
+const config = require('@config');
 const AuthorizationService = require('../../services/Authorization.Service');
 
-// const logger = require('../../common/log/logger');
-const config = require('../../common/config/config');
+// const logger = require('@logger');
 
 const { prefix } = config.security;
 

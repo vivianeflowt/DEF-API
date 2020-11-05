@@ -25,3 +25,4 @@ https://github.com/mapbox/node-sqlite3
 https://sequelize.org/v5/manual/dialects.html#postgresql
 https://github.com/dylang/npm-check
 https://github.com/leepowelldev/mongoose-validator
+https://github.com/ilearnio/module-alias

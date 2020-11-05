@@ -18,6 +18,11 @@
     "test-menu": "jest --watch",
     "require-time": "./scripts/require-time"
   },
+  "_moduleAliases": {
+    "@root": ".",
+    "@config": "./common/config/config.js",
+    "@logger": "./common/log/logger.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vivianeflowt/def-api-core.git"
@@ -55,6 +60,7 @@
     "helmet": "4.1.1",
     "http": "0.0.1-security",
     "jsonwebtoken": "8.5.1",
+    "module-alias": "2.2.2",
     "mongoose": "5.10.11",
     "mongoose-unique-validator": "2.0.3",
     "mongoose-validator": "2.1.0",

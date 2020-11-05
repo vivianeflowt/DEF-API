@@ -1,5 +1,7 @@
 // #!/usr/bin/env node
 
+require('module-alias/register');
+
 console.clear();
 
 // @ EXPRESS LOADER
@@ -9,8 +11,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
-const logger = require('./common/log/logger');
-const config = require('./common/config/config');
+const logger = require('@logger');
+const config = require('@config');
 const ApiRoutes = require('./api');
 
 const database = require('./database');

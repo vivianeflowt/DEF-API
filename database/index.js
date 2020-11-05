@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const logger = require('../common/log/logger');
-const config = require('../common/config/config');
+const logger = require('@logger');
+const config = require('@config');
 
 // @ MONGODB LOADER
 
