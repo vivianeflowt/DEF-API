@@ -8,20 +8,16 @@ const config = require('@config');
 /* eslint-enable */
 
 const Sequelize = require('sequelize');
-const PostModel = require('./sequelize/models/post.js');
+const PostModel = require('./models/post.js');
 
 const { uri } = config.database.mysql;
+//
+// const sequelize = new Sequelize(uri);
+const sequelize = new Sequelize(uri, { logging: false });
+// Models
+const Post = PostModel(sequelize, Sequelize);
 
 module.exports.connect = async () => {
-  // const sequelize = new Sequelize(uri);
-  const sequelize = new Sequelize(uri, { logging: false });
-
-  //
-  /* eslint-disable */
-  const Post = PostModel(sequelize, Sequelize);
-  /* eslint-enable */
-
-  //
   await sequelize
     .sync({ force: true })
     .then(() => {
@@ -32,4 +28,10 @@ module.exports.connect = async () => {
       console.log(error);
       process.exit(1);
     });
+};
+
+module.exports.db = sequelize;
+
+module.exports.models = {
+  Post
 };

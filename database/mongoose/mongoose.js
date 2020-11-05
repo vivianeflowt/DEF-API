@@ -8,27 +8,21 @@ const config = require('@config');
 /* eslint-enable */
 
 // @ MONGODB LOADER
+const { uri } = config.database.mongo;
+
 const mongoose = require('mongoose');
 
-// const getUri = () => {
-//   // mongodb://localhost:27017/test
-//   const { host, port, database } = config.database.mongo;
-//   return `mongodb://${host}:${port}/${database}`;
-// };
+mongoose.Promise = global.Promise;
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
 module.exports.connect = async () => {
-  const { uri } = config.database.mongo;
-
-  mongoose.Promise = global.Promise;
-  mongoose.set('useNewUrlParser', true);
-  mongoose.set('useFindAndModify', false);
-  mongoose.set('useCreateIndex', true);
-  mongoose.set('useUnifiedTopology', true);
-  // console.log(uri);
   await mongoose
     .connect(uri)
     .then(() => {
-      logger.log('app', 'Mongo Connected...');
+      logger.log('app', 'Mongoose Connected...');
     })
     .catch((error) => {
       logger.log('error', error);

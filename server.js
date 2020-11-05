@@ -24,8 +24,7 @@ const helmet = require('helmet');
 
 const ApiRoutes = require('./api');
 
-const mongoose = require('./database/mongoose');
-const sequelize = require('./database/sequelize');
+const database = require('./database/database');
 
 const init = async () => {
   // import path from 'path'
@@ -53,8 +52,8 @@ const init = async () => {
 
   app.use(ApiRoutes);
 
-  await mongoose.connect();
-  await sequelize.connect();
+  await database.mongoose.connect();
+  await database.sequelize.connect();
 
   // # Catch All
   app.use((error, req, res, next) => {
