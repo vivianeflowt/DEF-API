@@ -4,7 +4,7 @@
 
 /* eslint-disable */
 const config = require('@config');
-const Account = require('@models/Account');
+const Account = require('@mongoose/models/Account');
 /* eslint-enable */
 
 const jwt = require('jsonwebtoken');

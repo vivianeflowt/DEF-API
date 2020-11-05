@@ -24,8 +24,8 @@ const helmet = require('helmet');
 
 const ApiRoutes = require('./api');
 
-const mongo = require('./database/mongo');
-const postgres = require('./database/postgres');
+// const mongo = require('./database/mongo');
+// const postgres = require('./database/postgres');
 
 const init = async () => {
   // import path from 'path'
@@ -53,8 +53,8 @@ const init = async () => {
 
   app.use(ApiRoutes);
 
-  await mongo.connect();
-  await postgres.connect();
+  // await mongo.connect();
+  // await postgres.connect();
 
   // # Catch All
   app.use((error, req, res, next) => {

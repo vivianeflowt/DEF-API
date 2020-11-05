@@ -3,7 +3,7 @@
 /* eslint-enable */
 
 /* eslint-disable */
-const Account = require('@models/Account');
+const Account = require('@mongoose/models/Account');
 /* eslint-enable */
 
 // TODO Feature: Update Account Settings

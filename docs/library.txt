@@ -32,3 +32,4 @@ https://www.npmjs.com/package/mongoose-type-relation
 https://www.npmjs.com/package/mongoose-schema-types
 https://www.npmjs.com/package/mongoose-currency
 https://www.npmjs.com/package/mongoose-validator
+https://github.com/tomjschuster/sequelize-ui

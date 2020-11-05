@@ -16,6 +16,7 @@
     "docker-down": "./docker-down",
     "test": "jest",
     "test-menu": "jest --watch",
+    "sequelize-ui": "./tools/sequelize-ui/start",
     "require-time": "./scripts/require-time"
   },
   "_moduleAliases": {
@@ -23,7 +24,9 @@
     "@config": "./common/config/config.js",
     "@logger": "./common/log/logger.js",
     "@services": "./services",
-    "@models": "./database/models",
+    "@database": "./database",
+    "@mongoose": "./database/mongoose",
+    "@sequelize": "./database/sequelize",
     "@core": "./common/core",
     "@constants": "./common/constants",
     "@validators": "./common/validators",
