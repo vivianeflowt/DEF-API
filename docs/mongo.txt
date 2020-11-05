@@ -1,4 +1,0 @@
-https://mongoosejs.com/docs/3.7.x/index.html
-https://mongoosejs.com/docs/index.html
-https://www.mongodb.com/cloud/atlas
-https://docs.mongodb.com/manual/core/document/

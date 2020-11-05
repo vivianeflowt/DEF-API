@@ -1,5 +1,0 @@
-npm - Run npm scripts from the command palatte and validate the installed modules defined in package.json.
-JavaScript (ES6) Snippets - Adds code snippets for JavaScript development in ES6 syntax.
-Search node_modules - Quickly search for node modules in your project.
-NPM IntelliSense - Adds IntelliSense for npm modules in your code.
-Path IntelliSense - Autocompletes filenames in your code.
