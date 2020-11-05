@@ -3,7 +3,7 @@ const config = require('@config');
 // const logger = require('@logger');
 /* eslint-enable */
 
-const { prefix } = config.security;
+const prefix = config.application.prefix.header;
 
 const headerToken = `${prefix}-access-token`;
 

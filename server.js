@@ -89,10 +89,10 @@ init();
 //   }, 2000);
 // };
 
-// setTimeout(() => {
-//   console.log('');
-//   // onsole.log(config.security.key.public);
-//   // console.log(config.security.key.private);
-//   console.log(config);
-//   console.log('');
-// }, 3000);
+setTimeout(() => {
+  console.log('');
+  // onsole.log(config.security.key.public);
+  // console.log(config.security.key.private);
+  console.log(config);
+  console.log('');
+}, 3000);

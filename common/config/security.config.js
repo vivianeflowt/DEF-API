@@ -1,10 +1,9 @@
-#!/usr/bin/env node
-require('dotenv').config();
+// require('dotenv').config();
 
 const keys = require('../utils/keys');
 
 module.exports = {
-  prefix: process.env.SECURITY_PREFIX || 'api',
+  // prefix: process.env.SECURITY_PREFIX || 'api',
   key: {
     public: keys.getPublicKey(),
     private: keys.getPrivateKey()

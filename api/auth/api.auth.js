@@ -10,7 +10,7 @@ const router = express.Router();
 
 const AuthorizationService = require('../../services/Authorization.Service');
 
-const { prefix } = config.security;
+const prefix = config.application.prefix.header;
 
 const headerToken = `${prefix}-access-token`;
 

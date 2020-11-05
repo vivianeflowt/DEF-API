@@ -2,7 +2,7 @@
 const config = require('@config');
 /* eslint-enable */
 
-const { prefix } = config.security;
+const prefix = config.application.prefix.header;
 
 const prefixMethod = `${prefix}-method`;
 const prefixAccess = `${prefix}-access`;

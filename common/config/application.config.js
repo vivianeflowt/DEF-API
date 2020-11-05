@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-require('dotenv').config();
+// require('dotenv').config();
 
 module.exports = {
   name: process.env.APP_NAME || 'APP',

@@ -20,10 +20,10 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@config": "./common/config",
+    "@config": "./common/config/config.js",
     "@logger": "./common/log/logger.js",
     "@services": "./services",
-    "@models": "./database/models/",
+    "@models": "./database/models",
     "@core": "./common/core",
     "@constants": "./common/constants",
     "@validators": "./common/validators",
