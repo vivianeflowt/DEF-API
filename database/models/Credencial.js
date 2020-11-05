@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 // const bcrypt = require('bcrypt');

@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 // require('dotenv').config();
 
 const keys = require('../utils/keys');

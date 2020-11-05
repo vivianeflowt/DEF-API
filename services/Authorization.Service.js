@@ -1,4 +1,8 @@
 /* eslint-disable */
+'use strict';
+/* eslint-enable */
+
+/* eslint-disable */
 const config = require('@config');
 const Account = require('@models/Account');
 /* eslint-enable */

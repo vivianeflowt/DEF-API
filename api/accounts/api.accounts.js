@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 // @
 const express = require('express');
 

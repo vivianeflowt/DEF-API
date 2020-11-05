@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 const Sequelize = require('sequelize');
 
 const { sequelize } = global;

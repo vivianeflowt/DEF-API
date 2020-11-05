@@ -1,4 +1,8 @@
 /* eslint-disable */
+'use strict';
+/* eslint-enable */
+
+/* eslint-disable */
 const config = require('@config');
 /* eslint-enable */
 

@@ -5,3 +5,4 @@ scripts
 jest.config.js
 tests
 .vscode
+debug.js

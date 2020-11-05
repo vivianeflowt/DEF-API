@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 // @ ICON
 module.exports = {
   success: '✅',
@@ -25,5 +29,5 @@ module.exports = {
   square1: '▫️',
   square2: '▪️',
   hook: '↩️',
-  server: '🔹',
+  server: '🔹'
 };

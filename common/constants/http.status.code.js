@@ -1,9 +1,13 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 // @ HTTP STATUS CODE
 module.exports = {
   Informational: {
     Continue: 100,
     'Switching Protocols': 101,
-    Processing: 102,
+    Processing: 102
   },
   Success: {
     OK: 200,
@@ -15,7 +19,7 @@ module.exports = {
     'Partial Content': 206,
     'Multi-Status': 207,
     'Already Reported': 208,
-    'IM Used': 226,
+    'IM Used': 226
   },
   Redirection: {
     'Multiple Choices': 300,
@@ -25,7 +29,7 @@ module.exports = {
     'Not Modified': 304,
     'Use Proxy': 305,
     'Temporary Redirect': 307,
-    'Permanent Redirect': 308,
+    'Permanent Redirect': 308
   },
   ClientError: {
     'Bad Request': 400,
@@ -57,7 +61,7 @@ module.exports = {
     'Request Header Fields Too Large': 431,
     'Connection Closed Without Response': 444,
     'Unavailable For Legal Reasons': 451,
-    'Client Closed Request': 499,
+    'Client Closed Request': 499
   },
   ServerError: {
     'Internal Server Error': 500,
@@ -71,6 +75,6 @@ module.exports = {
     'Loop Detected': 508,
     'Not Extended': 510,
     'Network Authentication Required': 511,
-    'Network Connect Timeout Error': 599,
-  },
+    'Network Connect Timeout Error': 599
+  }
 };

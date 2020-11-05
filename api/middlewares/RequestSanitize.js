@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 const { request } = require('../../common/core/index');
 
 module.exports = async (req, res, next) => {

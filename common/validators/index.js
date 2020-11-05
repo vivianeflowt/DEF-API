@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 // const validator = require('validator');
 const validatorjs = require('validate.js');
 

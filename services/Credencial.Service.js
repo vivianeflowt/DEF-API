@@ -1,4 +1,6 @@
-// autorização a uma funcionalidade de um servico
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
 
 // const register = () => {
 //   //

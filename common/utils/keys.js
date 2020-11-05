@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 const fs = require('fs');
 const crypto = require('crypto');
 

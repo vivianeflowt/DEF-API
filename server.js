@@ -1,5 +1,10 @@
 // #!/usr/bin/env node
 //
+
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+//
 require('module-alias/register');
 require('dotenv').config();
 //

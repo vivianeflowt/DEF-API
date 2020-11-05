@@ -1,3 +1,7 @@
+/* eslint-disable */
+'use strict';
+/* eslint-enable */
+
 // @
 const express = require('express');
 const mongoose = require('mongoose');
@@ -7,7 +11,7 @@ const router = express.Router();
 // const Authorization = require('../middlewares/Authorization');
 // @ Controller
 
-const Post = require('@models/Post');
+// const Post = require('@models/Post');
 
 const debug = async (req, res) => {
   //
