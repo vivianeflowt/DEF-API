@@ -1,9 +1,10 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
+/* eslint-disable */
 const config = require('@config');
-const Account = require('../database/models/Account');
+const Account = require('@models/Account');
+/* eslint-enable */
 
-// const logger = require('./common/log');
+const jwt = require('jsonwebtoken');
+// const crypto = require('crypto');
 // const logger = require('@logger');
 
 const privateKey = config.security.key.private;
@@ -46,9 +47,9 @@ const Verify = async (options = {}) => {
   return { authorization: true, token: refreshToken };
 };
 
-const Refresh = async (options = {}) => {
-  //
-};
+// const Refresh = async (options = {}) => {
+//   //
+// };
 
 module.exports = {
   SignIn,

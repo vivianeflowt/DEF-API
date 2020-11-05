@@ -1,4 +1,6 @@
-const Account = require('../database/models/Account');
+/* eslint-disable */
+const Account = require('@models/Account');
+/* eslint-enable */
 
 const Create = async (options = {}) => {
   const { username, email, password } = options;

@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const keys = require('../utils/keys');
 
 module.exports = {
@@ -8,9 +6,6 @@ module.exports = {
   },
   application: {
     name: process.env.APP_NAME || 'APP'
-  },
-  path: {
-    root: process.cwd()
   },
   server: {
     host: process.env.SERVER_HOST || 'localhost',
@@ -41,7 +36,7 @@ module.exports = {
     }
   },
   security: {
-    prefix: process.env.SECURITY_PREFIX || 'api',
+    prefix: process.env.APP_PREFIX_HEADER || 'x-app',
     key: {
       public: keys.getPublicKey(),
       private: keys.getPrivateKey()

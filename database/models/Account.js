@@ -103,6 +103,7 @@ AccountSchema.pre('save', async function (next) {
   }
 });
 
+/* eslint-disable */
 AccountSchema.set('toJSON', {
   transform(doc, ret, opt) {
     ret.id = ret._id;
@@ -112,8 +113,9 @@ AccountSchema.set('toJSON', {
     return ret;
   }
 });
+/* eslint-enable */
 
-AccountSchema.pre('save', async function save(next) {
+AccountSchema.pre('save', async function (next) {
   try {
     this.updateAt = Date.now();
     return next();

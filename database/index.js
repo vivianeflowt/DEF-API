@@ -1,8 +1,10 @@
-const mongoose = require('mongoose');
+/* eslint-disable */
 const logger = require('@logger');
 const config = require('@config');
+/* eslint-enable */
 
 // @ MONGODB LOADER
+const mongoose = require('mongoose');
 
 const getUri = () => {
   // mongodb://localhost:27017/test

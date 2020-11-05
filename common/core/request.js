@@ -1,4 +1,6 @@
-const config = require('../config/config');
+/* eslint-disable */
+const config = require('@config');
+/* eslint-enable */
 
 const { prefix } = config.security;
 

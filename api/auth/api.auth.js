@@ -1,11 +1,14 @@
+/* eslint-disable */
+const config = require('@config');
+// const logger = require('@logger');
+/* eslint-enable */
+
 // @
 const express = require('express');
 
 const router = express.Router();
-const config = require('@config');
-const AuthorizationService = require('../../services/Authorization.Service');
 
-// const logger = require('@logger');
+const AuthorizationService = require('../../services/Authorization.Service');
 
 const { prefix } = config.security;
 

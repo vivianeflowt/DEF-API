@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const router = express.Router();
 
-const Authorization = require('../middlewares/Authorization');
+// const Authorization = require('../middlewares/Authorization');
 // @ Controller
 
 const debug = async (req, res) => {

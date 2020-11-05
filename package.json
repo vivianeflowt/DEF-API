@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "nodemon ./server.js",
-    "dev": "nodemon ./server.js",
+    "dev": "NODE_ENV=development && nodemon ./server.js",
     "format": "npx prettier --write .",
     "eslint": "./scripts/eslint",
     "docker-up": "./docker-up",
@@ -20,7 +20,7 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@config": "./common/config/config.js",
+    "@config": "./common/config",
     "@logger": "./common/log/logger.js",
     "@services": "./services",
     "@models": "./database/models/",

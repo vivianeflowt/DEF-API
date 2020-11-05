@@ -1,9 +1,11 @@
 // #!/usr/bin/env node
 
+//
 require('module-alias/register');
+require('dotenv').config();
 
+//
 console.clear();
-
 // @ EXPRESS LOADER
 const express = require('express');
 const http = require('http');
@@ -11,8 +13,10 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
+/* eslint-disable */
 const logger = require('@logger');
 const config = require('@config');
+/* eslint-enable */
 const ApiRoutes = require('./api');
 
 const database = require('./database');
@@ -80,9 +84,10 @@ init();
 //   }, 2000);
 // };
 
-// setTimeout(() => {
-//   console.log('');
-//   console.log(config.security.key.public);
-//   console.log(config.security.key.private);
-//   console.log('');
-// }, 3000);
+setTimeout(() => {
+  console.log('');
+  // onsole.log(config.security.key.public);
+  // console.log(config.security.key.private);
+  console.log(config);
+  console.log('');
+}, 3000);
