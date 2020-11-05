@@ -16,7 +16,6 @@
     "docker-down": "./docker-down",
     "test": "jest",
     "test-menu": "jest --watch",
-    "sequelize-ui": "./tools/sequelize-ui/start",
     "require-time": "./scripts/require-time"
   },
   "_moduleAliases": {

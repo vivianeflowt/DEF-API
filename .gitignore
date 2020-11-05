@@ -41,4 +41,3 @@ $RECYCLE.BIN/
 [Dd]esktop.ini
 *.lnk
 .yarn-integrity
-tools/sequelize-ui/node_modules
