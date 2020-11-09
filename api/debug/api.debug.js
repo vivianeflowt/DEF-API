@@ -29,7 +29,7 @@ const debug2 = async (req, res) => {
   //
   const { method } = req;
 
-  const result = await CredencialService.Register(req.body);
+  const result = await CredencialService.Define();
 
   console.log(result);
 
