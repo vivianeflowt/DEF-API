@@ -10,12 +10,15 @@ const Account = require('@mongoose/models/account');
 // TODO Feature: Confirm E-mail
 
 const Create = async (options = {}) => {
-  const { username, email, password } = options;
+  const {
+    username, email, password, roles
+  } = options;
   try {
     const account = new Account({
       username: username || '',
       email: email || '',
-      password: password || ''
+      password: password || '',
+      roles: roles || []
     });
     await account.save();
     return { success: true, id: account.id };

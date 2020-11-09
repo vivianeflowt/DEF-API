@@ -11,8 +11,15 @@ const AccountService = require('../../services/Account.Service');
 // @ Controller
 
 const signup = async (req, res) => {
-  const { username, email, password } = req.body;
-  const result = await AccountService.Create({ username, email, password });
+  const {
+    username, email, password, roles
+  } = req.body;
+  const result = await AccountService.Create({
+    username,
+    email,
+    password,
+    roles
+  });
   if (result.success) {
     return res.status(200).json(result);
   }

@@ -74,6 +74,11 @@ const AccountSchema = new Schema({
     type: Boolean,
     default: true
   },
+  roles: {
+    type: [],
+    uppercase: true,
+    default: []
+  },
   createdAt: {
     type: Date,
     default: Date.now
@@ -91,6 +96,20 @@ AccountSchema.pre('save', async function (next) {
   try {
     const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
     this.password = await bcrypt.hash(this.password, salt);
+    return next();
+  } catch (error) {
+    return next(error);
+  }
+});
+
+AccountSchema.pre('save', async function (next) {
+  if (!this.isModified('roles')) return next();
+  try {
+    const roles = this.roles.sort();
+    this.roles = [];
+    roles.forEach((role) => {
+      this.roles.push(role.toUpperCase().trim());
+    });
     return next();
   } catch (error) {
     return next(error);

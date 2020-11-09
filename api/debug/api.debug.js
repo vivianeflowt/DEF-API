@@ -7,7 +7,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const router = express.Router();
-
+const CredencialService = require('../../services/Credencial.Service');
 // const Authorization = require('../middlewares/Authorization');
 // @ Controller
 
@@ -29,12 +29,12 @@ const debug2 = async (req, res) => {
   //
   const { method } = req;
 
-  const newpost = await Post.create({ text: 'lalalal' });
+  const result = await CredencialService.Register(req.body);
 
-  console.log(newpost.text);
+  console.log(result);
 
   return res.status(200).json({
-    message: newpost.text,
+    message: result,
     method
   });
 };
@@ -54,8 +54,8 @@ const deleteDatabase = async (req, res) => {
 // router.use(Authorization);
 // @ ROUTES
 // router.use(authorization);
-router.get('/', debug2);
-router.post('/', debug);
+router.get('/', debug);
+router.post('/', debug2);
 router.post('/', debug);
 router.put('/', debug);
 router.patch('/', debug);

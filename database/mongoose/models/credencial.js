@@ -5,18 +5,16 @@
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 // const bcrypt = require('bcrypt');
-// const uniqueValidator = require('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const CredencialSchema = new Schema({
   context: {
     type: String,
     trim: true,
+    immutable: true,
+    // unique: true,
     uppercase: true,
     require: true
-  },
-  privileges: {
-    type: Object,
-    default: {}
   },
   description: {
     type: String,
@@ -24,13 +22,13 @@ const CredencialSchema = new Schema({
     uppercase: true,
     default: ''
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
+  privileges: {
+    type: Object,
+    default: {}
   }
 });
 
-// CredencialSchema.plugin(uniqueValidator);
+CredencialSchema.plugin(uniqueValidator);
 
 const CredencialModel = mongoose.model('Credencial', CredencialSchema);
 

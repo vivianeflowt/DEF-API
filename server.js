@@ -1,6 +1,5 @@
 // #!/usr/bin/env node
 //
-
 /* eslint-disable */
 'use strict';
 /* eslint-enable */
