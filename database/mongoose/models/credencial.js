@@ -8,7 +8,7 @@ const { Schema } = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const CredencialSchema = new Schema({
-  context: {
+  role: {
     type: String,
     trim: true,
     immutable: true,
@@ -19,7 +19,6 @@ const CredencialSchema = new Schema({
   description: {
     type: String,
     trim: true,
-    uppercase: true,
     default: ''
   },
   privileges: {
@@ -27,6 +26,17 @@ const CredencialSchema = new Schema({
     default: {}
   }
 });
+
+/* eslint-disable */
+CredencialSchema.set('toJSON', {
+  transform(doc, ret, opt) {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  }
+});
+/* eslint-enable */
 
 CredencialSchema.plugin(uniqueValidator);
 
