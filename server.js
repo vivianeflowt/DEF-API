@@ -21,7 +21,7 @@ const morgan = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
 
-const ApiRoutes = require('./api');
+const WidgetsRoutes = require('./widgets');
 
 const database = require('./database/database');
 
@@ -48,7 +48,7 @@ const init = async () => {
   // #
   app.use(morgan(' - :method :url :status :res[content-length] - :response-time ms'));
 
-  app.use(ApiRoutes);
+  app.use(WidgetsRoutes);
 
   await database.mongoose.connect();
   await database.sequelize.connect();
